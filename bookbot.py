@@ -1,3 +1,4 @@
+import sys
 
 def get_book_contents(book):
     with open(book) as f:
@@ -35,7 +36,11 @@ def get_characters(book_contents):
     return cmap_list
 
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 bookbot.py _book_path_\n_book_path_: path to a txt file for the book to analyse")
+        exit(1)
+              
+    book_path = sys.argv[1]
     
     try:
         book = get_book_contents(book_path)
